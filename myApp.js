@@ -1,7 +1,19 @@
-const express = require('express');
+const express = require("express");
+const helmet = require("helmet");
+
 const app = express();
 
+// Apply helmet.hidePoweredBy() middleware
+app.use(helmet.hidePoweredBy());
 
+app.get("/", (req, res) => {
+  res.send("Hello, world! Security headers applied.");
+});
+
+const PORT = 3000;
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 
 
